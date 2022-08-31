@@ -14,7 +14,7 @@ public class Filosofo extends Thread {
         while (true) {
             tempo = (int) (Math.random() * TEMPO_MAXIMO);
             pensar(tempo);
-            getGarfos(); // usar recurso (garfo) compartilhado
+            Mesa.getGarfos(); // usar recurso (garfo) compartilhado
             tempo = (int) (Math.random() * TEMPO_MAXIMO);
             comer(tempo);
             returnGarfos(); // devolve recurso (garfo)

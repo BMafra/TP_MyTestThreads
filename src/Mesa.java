@@ -1,7 +1,24 @@
 public class Mesa {
     // estrutura de dados: vetor, ArrayList
-    // garfos[5]
-    //filosofos[5] -> int
+
+    int[] filosofos = new int[5];
+    public static int PENSANDO = 1; //Todos começam pensando
+    public static int COMENDO = 2;
+    public static int FOME = 3;
+
+    public Mesa(){
+        for(int i = 0; i < 5; i++){
+            filosofos[i] = PENSANDO; // inicializando
+        }
+    }
+
+    public void getGarfos(int filosofo){
+        //pegar os garfos(2)
+    }
+
+    public void returnGarfos(){
+        //devolver os garfos
+    }
 
     boolean[] garfos = new boolean[5];
 
