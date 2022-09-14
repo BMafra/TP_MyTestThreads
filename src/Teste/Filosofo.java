@@ -1,23 +1,25 @@
-public class Filosofo extends Thread {
+package Teste;
+
+public class Filosofo extends Thread{
     final static int TEMPO_MAXIMO = 100;
-    Mesa mesa; // garfos -> controle do semafaro (quanto 0 garfo ta disponivel ou não)
+    Mesa mesa;
     int filosofo;
 
-    public Filosofo(String nome, Mesa mesaDeJantar, int fil) {
+    public Filosofo(String nome, Mesa mesadejantar, int fil) {
         super(nome);
-        mesa = mesaDeJantar;
+        mesa = mesadejantar;
         filosofo = fil;
     }
 
-    public void run() { // inicia execução da thread
+    public void run() {
         int tempo = 0;
         while (true) {
             tempo = (int) (Math.random() * TEMPO_MAXIMO);
             pensar(tempo);
-            mesa.getGarfos(filosofo); // usar recurso (garfo) compartilhado
+            mesa.pegarGarfos(filosofo);
             tempo = (int) (Math.random() * TEMPO_MAXIMO);
             comer(tempo);
-            mesa.returnGarfos(); // devolve recurso (garfo)
+            mesa.returningGarfos(filosofo);
         }
     }
 
@@ -25,7 +27,7 @@ public class Filosofo extends Thread {
         try {
             sleep(tempo);
         } catch (InterruptedException e) {
-            System.out.println("O Filófoso pensou em demasia"); // "morreu de fome!"
+            System.out.println("O Filófoso pensou em demasia");
         }
     }
 
